@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{31f7624e-c410-4e2d-a8f9-869b992748c5}") = "PawnNameVariety", "PawnNameVariety\PawnNameVariety.csproj", "{4ac2e351-1aa4-4469-a197-0fd894ed73da]}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4ac2e351-1aa4-4469-a197-0fd894ed73da}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ac2e351-1aa4-4469-a197-0fd894ed73da}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ac2e351-1aa4-4469-a197-0fd894ed73da}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ac2e351-1aa4-4469-a197-0fd894ed73da}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {aed2ff72-b8d4-413d-821d-b6c985d763aa}
+	EndGlobalSection
+EndGlobal
