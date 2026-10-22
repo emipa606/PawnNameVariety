@@ -1,46 +1,57 @@
 # GitHub Copilot Instructions for Pawn Name Variety (Continued)
 
 ## Mod Overview and Purpose
+**Mod Name**: Pawn Name Variety (Continued)  
+**Author**: Murmur  
+**Description**: This mod enhances RimWorld's character naming system by introducing a wide variety of name combinations, reducing the prevalence of predefined names and increasing the uniqueness of each pawn. 
 
-**Pawn Name Variety (Continued)** is a RimWorld mod designed to enhance the diversity of pawn names in the game by unlocking thousands of potential name combinations. The mod achieves this by breaking down predefined pawn names into first, last, and nicknames, then inserting them into gender-specific name pools. This approach increases randomness and reduces repetition of familiar names from game to game, providing a fresher and more varied gameplay experience without affecting tribal and imperial pawns that have unique naming schemes.
+In RimWorld, many characters use predefined names and backstories, which can become repetitive. This mod adds a layer of variability by breaking existing predefined full names into first, last, and nick names, which are then shuffled into the name generation pool, resulting in thousands of potential new combinations. This allows for a more diverse and immersive colony experience.
 
 ## Key Features and Systems
-
-- **Name Variety Enhancement**: Breaks down all predefined full names into components – first names, last names, and nicknames – and adds them to the random pools, dramatically increasing potential name combinations.
-- **Backer Name Avoidance**: Prevents predefined 'backer' and 'name in game' names from appearing unless they are specifically added to the 'Preferred Player-Created Characters' list.
-- **Duplicate Name Check**: Ensures no duplicate names are added to the pool, maintaining name variety.
-- **Preferred Characters Support**: Allows favored characters named in the RimWorld options menu to still appear in games.
-- **Nickname Rarity**: Reflects true randomness by having fewer pawns with nicknames, as most nicknames in vanilla are from predefined names.
+- **Random Name Generation**: The mod dismantles existing full names into separate first, last, and nick names, thus enabling novel combinations.
+- **Variety Expansion**: Introduces thousands of new name combinations without adding entirely new names, just by reconfiguring existing ones.
+- **Selective Exclusion**: Prevents predefined 'backer pawns' or 'name in game' names from appearing, unless they're added to the 'Preferred Player-Created Characters' list.
+- **Duplicate Check**: The mod checks for duplicate names, ensuring each name in the pool is unique.
+- **Preserved Favorites**: Users can still see favored characters by adding their names to the list in the settings.
+- **Limited Nicknames**: With no predefined names, nicknames become a rare feature in randomly generated pawns.
 
 ## Coding Patterns and Conventions
-
-- **C# Class Structure**: 
-  - Unified naming conventions for classes and methods using PascalCase.
-  - Classes are organized by functionality for better readability and maintenance.
-
-- **Main Classes**:
-  - `HarmonyPatcher`: Manages the application of Harmony patches to tweak or alter the game's systems.
-  - `PawnBioAndNameGenerator_TryGetRandomUnusedSolidBioFor` and `PawnBioAndNameGenerator_TryGetRandomUnusedSolidName`: Handle the logic for fetching and generating bios and names.
-  - `PNVMod` and `PNVSettings`: Responsible for managing mod initialization and settings.
-  - `S`: Contains static methods or constants for shared or utility purposes.
-  - `Startup`: Manages the startup logic pertinent to the mod.
+- **C# Directory Setup**: C# files are organized in `\Source\PawnNameVariety\` for clear structure and accessibility.
+- **Namespaces and Classes**: Each functionality is encapsulated within specific namespaces and classes reflecting its purpose, such as `HarmonyPatcher` and `PNVMod`.
+- **Comments**: Comments are vital for understanding the logic and flow, especially in methods that manipulate XML and apply Harmony patches.
+- **Method Naming**: Use PascalCase for method names (e.g., `DoSettingsWindowContents`, `WriteSettings`).
 
 ## XML Integration
-
-- XML files may be used to configure name generation rules or pools, ensuring mod data is easily manageable and extendable without needing to modify complex C# code directly.
-- Ensure XML files follow a consistent formatting pattern for easier parsing and maintenance.
+- **File Path**: XML files are stored in paths like `\Source\About.xml`.
+- **Dependencies Management**: Handle mod dependencies using XML tags. The file `About.xml` references the Harmony library as a dependency for required patches.
+- **Configuration**: Any changes or configurations affecting game data (like names) should be verified in XML files.
 
 ## Harmony Patching
-
-- **Purpose and Use**: Harmony is utilized to patch methods within RimWorld, allowing the mod to intercept and modify existing game logic regarding name generation.
-- **Key Practice**: Apply patches responsibly to maintain compatibility with other mods and ensure they are reversible to prevent residual effects when disabled.
+- **Purpose**: Harmony patches are used to override or extend game behaviors related to name generation without altering the core files.
+- **Patch Location**: These patches can be found in files such as `HarmonyPatcher.cs`, where patching and postfix methods are defined.
+- **Postfix Methods**: Used to execute additional code after the original method, such as in `PawnBioAndNameGenerator_TryGetRandomUnusedSolidBioFor`.
+- **Debugging**: Ensure you log errors elegantly to assist in debugging. Use Harmony’s built-in methods to troubleshoot patch conflicts.
 
 ## Suggestions for Copilot
+- **Name Matching Logic**: Enhance Copilot suggestions by improving name parsing and duplicate checking logic using string manipulation techniques.
+- **Harmony Patches Automation**: Propose creative ways to automate the creation of Harmony patches for new name components.
+- **Unit Testing**: Suggest unit tests for methods that alter pawns' names to prevent unexpected behaviors when new combinations are added.
+- **Mod Compatibility Checks**: Provide insights on creating checks that ensure compatibility with other mods altering name tables.
 
-- **Predictive Coding**: Incorporate predictive elements for generating random name combinations based on predefined rules.
-- **Focus on Compatibility**: Suggest Harmony patches that ensure compatibility with expansion content and other mods.
-- **Code Optimization**: Streamline methods within the `PawnBioAndNameGenerator_*` classes to efficiently handle large datasets of names.
-- **Utility Functions**: Propose utility functions for XML parsing and name pool manipulation, enhancing code reuse across different parts of the mod.
-- **Robust Error Handling**: Implement thorough exception handling and logging, which Copilot can help generate based on common patterns observed in similar mods.
+Utilize GitHub Copilot to optimize your C# logic, streamline XML processing, and handle dynamic game behaviors efficiently by embracing these conventions and suggestions.
 
-The goal of these Copilot instructions is to assist with efficient code completion and problem solving within the context of enhancing name generation diversity in RimWorld. The instructions should be used as a reference for maintaining code quality and compatibility across various modded environments.
+## Project Solution Guidelines
+- Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
+- Use these in-solution XML files as the primary files for reference and modification.
+- The `.github/copilot-instructions.md` file is included in the solution under the `.github` solution folder, so it should be read/modified from within the solution instead of using paths outside the solution. Update this file once only, as it and the parent-path solution reference point to the same file in this workspace.
+- When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
+- In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
+- For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
+
+
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
+

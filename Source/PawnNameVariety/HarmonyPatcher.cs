@@ -5,7 +5,7 @@ using Verse;
 namespace MUR_PawnNameVariety;
 
 [StaticConstructorOnStartup]
-public class HarmonyPatcher
+public static class HarmonyPatcher
 {
     static HarmonyPatcher()
     {

@@ -6,7 +6,7 @@ using Verse;
 namespace MUR_PawnNameVariety;
 
 [StaticConstructorOnStartup]
-public class Startup
+public static class Startup
 {
     static Startup()
     {
